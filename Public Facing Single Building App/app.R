@@ -1,3 +1,7 @@
+###
+# A template for public-facing apps of wifi use in Duke buildings.
+###
+
 library(shiny)
 library(readr)
 library(raster)
