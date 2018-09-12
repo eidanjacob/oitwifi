@@ -1,5 +1,5 @@
 ###
-# A template for public-facing apps of wifi use in Duke buildings. (This app won't work!)
+# Perkins Library Public Wifi Map
 ###
 
 library(shiny)
@@ -14,12 +14,12 @@ library(maps)
 ### ### ### Everything you'd want to mess with should be in here
 threshold <- 10 # APs with this many or fewer events will display 0 
 refresh <- 30 # Refresh rate in minutes
-orientation <- c("left" = "To Left",
-                 "right" = "To Right",
-                 "down" = "To Down",
-                 "up" = "To Up")
-building <- "Building Name"
-building_folder <- "building_folder" # Name of building data folder
+orientation <- c("left" = "To West Union",
+                 "right" = "To Bostock",
+                 "down" = "To Abele Quad",
+                 "up" = "To CIEMAS")
+building <- "Perkins Library"
+building_folder <- "perkins" # Name of building data folder
 height <- 600 # in px
 txtscl <- 1 # Text scaling factor (reduce if text too large)
 ### ### ###
