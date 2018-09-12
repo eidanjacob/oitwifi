@@ -25,8 +25,14 @@ txtscl <- 1 # Text scaling factor (reduce if text too large)
 ### ### ###
 
 # Global Variables
-apsdf <- read_csv(paste0("../data/","building_folder","/apData.csv"))
-wallsdf <- read_csv(paste0("../data/","building_folder","/buildingData.csv"))
+apsdf <- read_csv(
+  paste0("../data/",
+         building_folder,
+         "/apData.csv"))
+wallsdf <- read_csv(
+  paste0("../data/",
+         building_folder,
+         "/buildingData.csv"))
 floors = unique(apsdf$floor)
 reportFile = "reportFile.txt"
 con <- file(reportFile, "w")
@@ -122,7 +128,7 @@ server <- function(input, output){
     invalidateLater(refresh * 60000) # Will auto-update at least once per [refresh rate] minutes
     
     # Count the number of events per access point. This is a crude measure of network load but it's good enough for students.
-    eventsdf <- read_csv("./eventData.csv")
+    eventsdf <- read_csv(paste0("../data",building_folder,"/eventData.csv"))
     chartData <- summarise(group_by(eventsdf, ap), n())
     
     # Are there access points with no events? If so, make a note in reportFile.
