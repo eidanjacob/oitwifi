@@ -1,6 +1,6 @@
-###
-# Application for Football Stadium + Surroundings
-###
+###################################################
+# Application for Football Stadium + Surroundings #
+###################################################
 
 options(repos = "http://archive.linux.duke.edu/cran/")
 
