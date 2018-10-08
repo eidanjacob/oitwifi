@@ -29,7 +29,7 @@ if(!require(grid)){
 }
 
 # Global Variables
-building_folder <- "building_folder" # Name of building data folder
+building_folder <- "wallaceWade" # Name of building data folder
 height <- 600 # in px
 txtscl <- 1 # Text scaling factor (reduce if text too large)
 # apsdf <- read_csv(paste0("../data/",
@@ -49,7 +49,7 @@ server <- function(input, output){
   
   observe({
     # # Count the number of events per access point. This is a crude measure of network load but it's good enough for students.
-    # eventsdf <- read_csv(paste0("../data",building_folder,"/eventData.csv"))
+    # eventsdf <- read_csv(paste0("../data/",building_folder,"/eventData.csv"))
     # chartData <- summarise(group_by(eventsdf, ap), n())
     # 
     # # Are there access points with no events? If so, make a note in reportFile.

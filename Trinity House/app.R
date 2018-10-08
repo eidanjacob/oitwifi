@@ -1,5 +1,5 @@
 ###
-# Perkins Library Public Wifi Map
+# Trinity House Dorm Public Wifi Map
 ###
 
 library(shiny)
@@ -14,12 +14,12 @@ library(maps)
 ### ### ### Everything you'd want to mess with should be in here
 threshold <- 10 # APs with this many or fewer events will display 0 
 refresh <- 30 # Refresh rate in minutes
-orientation <- c("left" = "To West Union",
-                 "right" = "To Bostock",
-                 "down" = "To Abele Quad",
-                 "up" = "To CIEMAS")
-building <- "Perkins Library"
-building_folder <- "perkins" # Name of building data folder
+orientation <- c("left" = "To Broad Street",
+                 "right" = "To Randolph",
+                 "down" = "To Main Street",
+                 "up" = "To Jack Katz Stadium")
+building <- "Trinity House"
+building_folder <- "trinityHouse" # Name of building data folder
 height <- 600 # in px
 txtscl <- 1 # Text scaling factor (reduce if text too large)
 ### ### ###
@@ -63,8 +63,8 @@ server <- function(input, output){
   offsets <- data.frame(
     t(
       sapply(1:length(floors), function(i){
-        xOff <- (xRange) * ((i - 1) %% 2)
-        yOff <- (yRange * 0.8) * floor(i/2 - 1/2)
+        xOff <- (xRange*1.2) * ((i - 1) %% 2)
+        yOff <- (yRange*1.2) * floor(i/2 - 1/2)
         return(c(xOff, yOff))
       })
     )
@@ -128,9 +128,9 @@ server <- function(input, output){
     invalidateLater(refresh * 60000) # Will auto-update at least once per [refresh rate] minutes
     
     # Count the number of events per access point. This is a crude measure of network load but it's good enough for students.
-    eventsdf <- read_csv(paste0("../data",building_folder,"/eventData.csv"))
+    eventsdf <- read_csv(paste0("../data/",building_folder,"/eventData.csv"))
     chartData <- summarise(group_by(eventsdf, ap), n())
-    
+  
     # Are there access points with no events? If so, make a note in reportFile.
     missing <- apsdf$ap[which( !(apsdf$ap %in% chartData$ap))]
     if(length(missing) != 0){
